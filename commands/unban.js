@@ -16,7 +16,7 @@ module.exports = {
             //Message chat and log
             let msg = `**${message.author.tag}** unbanned user **${user}**.`;
             message.channel.send(msg);
-            Logger.embed(message, 'Member Unbanned', msg, 'ID - ' + user.id, message.author, config.colors.unbanned);
+            Logger.embed(message, 'Member Unbanned', msg, 'ID - ' + args[1], message.author, config.colors.unbanned);
         //Catch any errors
         }).catch(err => console.log(err));
     }

@@ -20,18 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12fe6f04-1819-48c3-b434-cceb87b6f7af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/modules/BanManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/RoleManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UserManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/ban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/imbl.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/imbl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/mute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/mute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/tempban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/tempban.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/unban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/unimbl.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unimbl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/unmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unmute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/functions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/RoleManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/RoleManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +71,7 @@
       <updated>1601812090631</updated>
       <workItem from="1601812091639" duration="12000" />
       <workItem from="1601812435198" duration="16365000" />
-      <workItem from="1601838764911" duration="2629000" />
+      <workItem from="1601838764911" duration="2879000" />
     </task>
     <servers />
   </component>

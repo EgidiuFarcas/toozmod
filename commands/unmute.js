@@ -18,6 +18,6 @@ module.exports = {
         //Message chat and log
         let msg = `**${message.author.tag}** unmuted user **${user.tag}**.`;
         message.channel.send(msg);
-        Logger.embed(message, 'Member Unmuted', msg, 'ID - ' + user.id, message.client.user, config.colors.unmuted);
+        Logger.embed(message, 'Member Unmuted', msg, 'ID - ' + user.id, message.author, config.colors.unmuted);
     }
 }

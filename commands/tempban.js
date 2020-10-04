@@ -21,7 +21,7 @@ module.exports = {
         //Ban the user
         await message.guild.member(user).ban({ reason: banReason});
         //Message chat and log
-        let msg = `**${message.author.tag}** banned user **${user.tag}** for **${time}** because: **${banReason}**.`;
+        let msg = `**${message.author.tag}** banned user **${user.tag}** for **${duration}** because: **${banReason}**.`;
         message.channel.send(msg);
         Logger.embed(message, 'Member Temporarily Banned', msg, 'ID - ' + user.id, message.author, config.colors.tempbanned);
         //Setup timer until unban
