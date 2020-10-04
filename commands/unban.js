@@ -8,7 +8,8 @@ module.exports = {
         let user = args[1];
 
         message.guild.fetchBans().then(async users => {
-            users.get(user);
+            let usr = users.get(user);
+            if(!usr) return;
             await message.guild.members.unban(user);
             let msg = `**${message.author.tag}** unbanned user **${user}**.`;
             message.channel.send(msg);

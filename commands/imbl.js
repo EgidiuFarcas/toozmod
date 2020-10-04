@@ -4,8 +4,8 @@ const Helpers = require('../helpers/functions');
 const ms = require("ms");
 
 module.exports = {
-    name: 'mute',
-    description: 'Mute a user',
+    name: 'imbl',
+    description: 'Blacklist a user',
     execute(message, args) {
         let user = Helpers.getUser(message, args);
         if(user === null) {
@@ -17,12 +17,12 @@ module.exports = {
         if(time === '0') time = 'forever';
         let muteReason = args.slice(3).join(' ');
 
-        if (user === message.author) return message.channel.send('You can\'t mute yourself');
-        if (!muteReason) return message.reply('You forgot to enter a reason for this mute!');
-        if(!time) return message.reply('You forgot to enter a duration for this mute!');
+        if (user === message.author) return message.channel.send('You can\'t blacklist yourself');
+        if (!muteReason) return message.reply('You forgot to enter a reason for this blacklist!');
+        if(!time) return message.reply('You forgot to enter a duration for this blacklist!');
 
-        let role = message.guild.roles.cache.find(r => r.name === config.muted_role_name);
-        if(!role) return message.reply('Muted role doesn\'t exist!');
+        let role = message.guild.roles.cache.find(r => r.name === config.imbl_role_name);
+        if(!role) return message.reply('Blacklist role doesn\'t exist!');
 
         try {
             message.guild.members.cache.get(user.id).roles.add(role);
@@ -31,24 +31,24 @@ module.exports = {
             return;
         }
 
-        let msg = `**${message.author.tag}** muted user **${user.tag}** for **${time}** because: **${muteReason}**.`;
+        let msg = `**${message.author.tag}** blacklisted user **${user.tag}** for **${time}** because: **${muteReason}**.`;
         message.channel.send(msg);
         Logger.embed(message,
-            'Member Muted',
+            'Member Blacklisted',
             msg,
             'ID - ' + user.id,
-            message.author, config.colors.muted);
+            message.author, config.colors.blacklisted);
         if(time === 'forever') return;
         setTimeout(function(){
             let member = message.guild.members.cache.get(user.id);
             if(member.roles.cache.has(role.id)) member.roles.remove(role).catch(err => console.log(err));
             else return;
-            let msg = `**${message.client.user.tag}** unmuted user **${user.tag}**.`;
+            let msg = `**${message.client.user.tag}** unblacklisted user **${user.tag}**.`;
             Logger.embed(message,
-                'Member Unmuted',
+                'Member Unblacklisted',
                 msg,
                 'ID - ' + user.id,
-                message.client.user, config.colors.unmuted);
+                message.client.user, config.colors.unblacklisted);
         }, ms(time));
     }
 }

@@ -25,14 +25,15 @@ module.exports = {
         let msg = `**${message.author.tag}** banned user **${user.tag}** for **${time}** because: **${banReason}**.`;
         message.channel.send(msg);
         Logger.embed(message,
-            'Member Banned',
+            'Member Temporarily Banned',
             msg,
             'ID - ' + user.id,
             message.author, config.colors.tempbanned);
 
         setTimeout(function(){
             message.guild.fetchBans().then(async users => {
-                users.get(user);
+                let usr = users.get(user);
+                if(!usr) return;
                 await message.guild.members.unban(user);
                 let msg = `**${message.client.user.tag}** unbanned user **${user.tag}**.`;
                 Logger.embed(message,

@@ -1,0 +1,11 @@
+{
+  "id": {
+    "user": "userid",
+    "type": "type value",
+    "reason": "reason",
+    "blacklisted": true,
+    "muted": false,
+    "blacklisted_time": "2h",
+    "muted_time": "-1"
+  }
+}

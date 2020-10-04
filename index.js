@@ -34,4 +34,6 @@ client.on('message', message => {
     if(args[0] === "tempban") client.commands.get('tempban').execute(message, args);
     if(args[0] === "mute") client.commands.get('mute').execute(message, args);
     if(args[0] === "unmute") client.commands.get('unmute').execute(message, args);
+    if(args[0] === "blacklist") client.commands.get('imbl').execute(message, args);
+    if(args[0] === "unblacklist") client.commands.get('unimbl').execute(message, args);
 })
