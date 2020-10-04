@@ -1,4 +1,5 @@
-exports.getUser = (message, args) => {
+exports.getUserFromCommand = (message) => {
+    let args = message.content.split(' ');
     let user = message.mentions.users.first();
     if (!user) {
         try {

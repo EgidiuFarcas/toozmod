@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="12fe6f04-1819-48c3-b434-cceb87b6f7af" name="Default Changelist" comment="" />
+    <list default="true" id="12fe6f04-1819-48c3-b434-cceb87b6f7af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/modules/BanManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/RoleManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UserManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/ban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/imbl.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/imbl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/mute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/mute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/tempban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/tempban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/unban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/unimbl.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unimbl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/unmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unmute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/functions.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +41,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1iPbI1Mjz6TsvV0pFPABe7MbIHC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,12 +77,24 @@
       <option name="presentableId" value="Default" />
       <updated>1601812090631</updated>
       <workItem from="1601812091639" duration="12000" />
-      <workItem from="1601812435198" duration="15592000" />
+      <workItem from="1601812435198" duration="16365000" />
+      <workItem from="1601838764911" duration="2629000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="235" y="375" width="800" height="715" key="#Plugins" timestamp="1601814298263">
@@ -56,6 +105,10 @@
       <screen x="0" y="28" width="2560" height="1412" />
     </state>
     <state x="368" y="507" width="618" height="451" key="#com.intellij.fileTypes.FileTypeChooser/0.28.2560.1412/2560.360.1920.1080@0.28.2560.1412" timestamp="1601832983590" />
+    <state x="1012" y="474" width="526" height="518" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601839604493">
+      <screen x="0" y="28" width="2560" height="1412" />
+    </state>
+    <state x="1012" y="474" width="526" height="518" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.28.2560.1412/2560.360.1920.1080@0.28.2560.1412" timestamp="1601839604493" />
     <state x="136" y="369" key="SettingsEditor" timestamp="1601814652844">
       <screen x="0" y="28" width="2560" height="1412" />
     </state>

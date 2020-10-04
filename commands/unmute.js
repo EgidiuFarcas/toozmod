@@ -1,37 +1,23 @@
 const Logger = require('../helpers/logger');
 const config = require('../config.json');
-const Helpers = require('../helpers/functions');
+const UserManager = require('../modules/UserManager');
+const RoleManager = require('../modules/RoleManager');
 
 module.exports = {
     name: 'unmute',
     description: 'Unmute a user',
     execute(message, args) {
-        let user = Helpers.getUser(message, args);
-        if(user === null) {
-            message.reply('Couldn\'t get a Discord user with this userID!');
-            console.log('Couldn\'t get a Discord user with this userID!');
-            return;
-        }
-
-        if (user === message.author) return message.channel.send('You can\'t mute yourself');
-
-        let role = message.guild.roles.cache.find(r => r.name === config.muted_role_name);
-        if(!role) return message.reply('Muted role doesn\'t exist!');
-        try {
-            let member = message.guild.members.cache.get(user.id);
-            if(member.roles.cache.has(role.id)) member.roles.remove(role).catch(err => console.log(err));
-            else return message.channel.send('Member is not muted.');
-        }catch (err) {
-            console.log(err);
-            return;
-        }
-
+        //Try to get user from command
+        let user = UserManager.getUserFromCommand(message);
+        if (user === null) return message.reply('Couldn\'t get a Discord user with this userID!');
+        //Check for self unmuting
+        if (user === message.author) return message.channel.send('You can\'t unmute yourself');
+        //Try to unmute user
+        if(RoleManager.removeRole(message, config.muted_role_name, user.id) === false)
+            return message.channel.send('Member is not muted.');
+        //Message chat and log
         let msg = `**${message.author.tag}** unmuted user **${user.tag}**.`;
         message.channel.send(msg);
-        Logger.embed(message,
-            'Member Unmuted',
-            msg,
-            'ID - ' + user.id,
-            message.client.user, config.colors.unmuted);
+        Logger.embed(message, 'Member Unmuted', msg, 'ID - ' + user.id, message.client.user, config.colors.unmuted);
     }
 }
