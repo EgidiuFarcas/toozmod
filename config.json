@@ -1,0 +1,15 @@
+{
+  "access_role_name": "Moderator",
+  "log_channel_name": "modlog",
+  "muted_role_name": "Muted",
+  "imbl_role_name": "Image Blacklist",
+  "colors": {
+    "muted": "000000",
+    "unmuted": "969C9F",
+    "banned": "FF5A52",
+    "unbanned": "5BFF83",
+    "tempbanned": "FFB854",
+    "blacklisted": "000000",
+    "unblacklisted": "000000"
+  }
+}
