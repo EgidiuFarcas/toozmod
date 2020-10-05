@@ -1,7 +1,5 @@
-const Logger = require('../helpers/logger');
-const config = require('../config.json');
 const UserManager = require('../modules/UserManager');
-const RoleManager = require('../modules/RoleManager');
+const Actions = require('../helpers/actions');
 
 module.exports = {
     name: 'unmute',
@@ -13,11 +11,10 @@ module.exports = {
         //Check for self unmuting
         if (user === message.author) return message.channel.send('You can\'t unmute yourself');
         //Try to unmute user
-        if(RoleManager.removeRole(message, config.muted_role_name, user.id) === false)
-            return message.channel.send('Member is not muted.');
-        //Message chat and log
         let msg = `**${message.author.tag}** unmuted user **${user.tag}**.`;
-        message.channel.send(msg);
-        Logger.embed(message, 'Member Unmuted', msg, 'ID - ' + user.id, message.author, config.colors.unmuted);
+        if(Actions.unmute(message, user, true, msg) === true)
+            message.channel.send(msg);
+        else message.channel.send('Member is not muted.');
+
     }
 }

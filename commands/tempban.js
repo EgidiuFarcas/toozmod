@@ -1,6 +1,7 @@
 const Logger = require('../helpers/logger');
 const UserManager = require('../modules/UserManager');
 const config = require('../config.json');
+const Actions = require('../helpers/actions');
 const ms = require("ms");
 
 module.exports = {
@@ -18,27 +19,15 @@ module.exports = {
         if (user === message.author) return message.channel.send('You can\'t ban yourself');
         if (!banReason) return message.reply('You forgot to enter a reason for this ban!');
         if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user because you the bot has not sufficient permissions!');
-        //Ban the user
-        await message.guild.member(user).ban({ reason: banReason});
-        //Message chat and log
+
         let msg = `**${message.author.tag}** banned user **${user.tag}** for **${duration}** because: **${banReason}**.`;
-        message.channel.send(msg);
-        Logger.embed(message, 'Member Temporarily Banned', msg, 'ID - ' + user.id, message.author, config.colors.tempbanned);
+        if(Actions.ban(message, user, true, msg, banReason) === true)
+            message.channel.send(msg);
+
         //Setup timer until unban
         setTimeout(function(){
-            //Look through bans
-            message.guild.fetchBans().then(async users => {
-                //Check if the user is still banned
-                let usr = users.get(user);
-                if(!usr) return;
-                //Unban the user
-                await message.guild.members.unban(user);
-                //Message chat and log
-                let msg = `**${message.client.user.tag}** unbanned user **${user.tag}**.`;
-                Logger.embed(message, 'Member Unbanned', msg, 'ID - ' + user.id, message.client.user, config.colors.unbanned);
-            //Catch any errors
-            }).catch(err => console.log(err));
-
+            let msg = `**${message.client.user.tag}** unbanned user **${args[1]}**.`;
+            Actions.unban(message, null, true, msg, message.client.user);
         }, ms(duration));
     }
 }

@@ -12,7 +12,7 @@ exports.addRole = (message, role_name, user_id) => {
     }
     return true;
 };
-exports.removeRole = (message, role_name, user_id) => {
+exports.removeRole = (message, role_name, user_id, reply = true) => {
     let member = message.guild.members.cache.get(user_id);
     let role = message.guild.roles.cache.find(r => r.name === role_name);
     if(!member){

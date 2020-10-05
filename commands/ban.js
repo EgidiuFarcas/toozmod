@@ -1,6 +1,6 @@
 const config = require('../config.json');
-const Logger = require('../helpers/logger');
 const UserManager = require('../modules/UserManager');
+const Actions = require('../helpers/actions');
 
 module.exports = {
     name: 'ban',
@@ -15,10 +15,8 @@ module.exports = {
         if (user === message.author) return message.channel.send('You can\'t ban yourself');
         if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user because you the bot has not sufficient permissions!');
         //Ban the user
-        await message.guild.member(user).ban({reason: reason});
-        //Message chat and log
         let msg = `**${message.author.tag}** banned user **${user.tag}** because: **${reason}**.`;
-        message.channel.send(msg);
-        Logger.embed(message, 'Member Banned', msg,'ID - ' + user.id, message.author, config.colors.banned);
+        if(Actions.ban(message, user, true, msg, reason) === true)
+            message.channel.send(msg);
     }
 }

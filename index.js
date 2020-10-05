@@ -1,8 +1,15 @@
-const fs = require("fs");
 const botConfig = require("./botconfig.json");
 const config = require("./config.json");
 const Logger = require("./helpers/logger");
+
+const fs = require("fs");
+const mongoose = require("mongoose");
 const Discord = require("discord.js");
+
+//Connect to mongoose db
+const uri = "mongodb+srv://toozmod_node:zFzlSQFOUx3GKiNO@cluster0.ztzpe.mongodb.net/toozmod?retryWrites=true&w=majority";
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true } );
+
 const client = new Discord.Client();
 //Create commands collection
 client.commands = new Discord.Collection();
@@ -27,7 +34,11 @@ client.on('message', message => {
     let args = message.content.substring(1).split(" ");
 
     if(args[0] === "test"){
-        //
+        let TimeEvent = require("./objects/TimeEvent");
+
+        let ti = new TimeEvent(message.author, "unban", 12);
+        return;
+
     }
     if(args[0] === "ban") client.commands.get('ban').execute(message, args);
     if(args[0] === "unban") client.commands.get('unban').execute(message, args);
