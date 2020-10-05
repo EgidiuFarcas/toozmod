@@ -5,6 +5,8 @@ const Logger = require("./helpers/logger");
 const fs = require("fs");
 const mongoose = require("mongoose");
 const Discord = require("discord.js");
+let Timer = require("./models/timer");
+const TimeEvent = require('./objects/TimeEvent');
 
 //Connect to mongoose db
 const uri = "mongodb+srv://toozmod_node:zFzlSQFOUx3GKiNO@cluster0.ztzpe.mongodb.net/toozmod?retryWrites=true&w=majority";
@@ -23,21 +25,26 @@ for(const file of commandFiles){
 
 client.once("ready", async () => {
     console.log(`${client.user.username} is now online.`);
+    let ch = client.channels.cache.get(config.log_channel_id);
+    let message = await ch.send('Back Online');
+    let r = await Timer.find();
+    let message2 = await message.channel.send(`Loading ${r.length} timed events. *Please wait...*`);
+    await r.forEach((info) => {
+        let t = new TimeEvent();
+        t.load(info._id).then(() => t.start(message));
+    });
+    await message2.edit(`**Load Complete.**`);
 });
 
 client.login(botConfig.token).then();
 
-client.on('message', message => {
+client.on('message', async message => {
     //Check if its a command
     if(message.content.charAt(0) !== botConfig.prefix) return;
     //Get only the command arguments
     let args = message.content.substring(1).split(" ");
 
     if(args[0] === "test"){
-        let TimeEvent = require("./objects/TimeEvent");
-
-        let ti = new TimeEvent(message.author, "unban", 12);
-        return;
 
     }
     if(args[0] === "ban") client.commands.get('ban').execute(message, args);

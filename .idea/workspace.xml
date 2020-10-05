@@ -20,22 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12fe6f04-1819-48c3-b434-cceb87b6f7af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/timer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objects/TimeEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/ban.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/imbl.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/imbl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/mute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/mute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/tempban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/tempban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/unban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/unimbl.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unimbl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/unmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/unmute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/RoleManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/RoleManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/TimeEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/objects/TimeEvent.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +76,7 @@
       <workItem from="1601812435198" duration="16365000" />
       <workItem from="1601838764911" duration="3428000" />
       <workItem from="1601894044408" duration="605000" />
-      <workItem from="1601895485858" duration="10382000" />
+      <workItem from="1601895485858" duration="16905000" />
     </task>
     <servers />
   </component>

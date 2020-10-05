@@ -32,8 +32,11 @@ exports.blacklist = (message, user, log=false, log_txt = "", author = message.au
 /* UN ACTIONS */
 
 exports.unban = (message, user, log=false, log_txt = "", author = message.author) => {
-    let arg1 = message.content.split(' ')[1];
-    user = arg1;
+    let arg1;
+    if(user === null) {
+        arg1 = message.content.split(' ')[1];
+        user = arg1;
+    }
     //Look through bans
     message.guild.fetchBans().then(async users => {
         //Check if the user is banned

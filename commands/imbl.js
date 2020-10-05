@@ -1,8 +1,6 @@
-const config = require('../config.json');
-const Logger = require('../helpers/logger');
 const UserManager = require('../modules/UserManager');
-const RoleManager = require('../modules/RoleManager');
 const Actions = require('../helpers/actions');
+const TimeEvent = require('../objects/TimeEvent');
 const ms = require("ms");
 
 module.exports = {
@@ -29,10 +27,16 @@ module.exports = {
 
         //If duration is forever, don't add a timeout
         if(time === 'forever') return;
+
+        let t = new TimeEvent();
+        t.create(user, "unblacklist", TimeEvent.parseTime(time));
+        t.save();
+        t.start(message);
+
         //Else, create a timeout to remove the role
-        setTimeout(function(){
-            let msg = `**${message.client.user.tag}** unblacklisted user **${user.tag}**.`;
-            Actions.unblacklist(message, user, true, msg, message.client.user);
-        }, ms(time));
+        // setTimeout(function(){
+        //     let msg = `**${message.client.user.tag}** unblacklisted user **${user.tag}**.`;
+        //     Actions.unblacklist(message, user, true, msg, message.client.user);
+        // }, ms(time));
     }
 }

@@ -1,6 +1,6 @@
 const UserManager = require('../modules/UserManager');
 const Actions = require('../helpers/actions');
-const ms = require("ms");
+const TimeEvent = require('../objects/TimeEvent');
 
 module.exports = {
     name: 'mute',
@@ -26,10 +26,17 @@ module.exports = {
 
         //If duration is forever, dont add a timeout
         if(duration === 'forever') return;
+
+        let t = new TimeEvent();
+        t.create(user, "unmute", TimeEvent.parseTime(duration));
+        t.save();
+        t.start(message);
+
         //Else, create a timeout to remove the role
-        setTimeout(function(){
-            let msg = `**${message.client.user.tag}** unmuted user **${user.tag}**.`;
-            Actions.unmute(message, user, true, msg, message.client.user);
-        }, ms(duration));
+
+        // setTimeout(function(){
+        //     let msg = `**${message.client.user.tag}** unmuted user **${user.tag}**.`;
+        //     Actions.unmute(message, user, true, msg, message.client.user);
+        // }, ms(duration));
     }
 }

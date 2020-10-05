@@ -1,7 +1,6 @@
-const Logger = require('../helpers/logger');
 const UserManager = require('../modules/UserManager');
-const config = require('../config.json');
 const Actions = require('../helpers/actions');
+const TimeEvent = require('../objects/TimeEvent');
 const ms = require("ms");
 
 module.exports = {
@@ -24,10 +23,15 @@ module.exports = {
         if(Actions.ban(message, user, true, msg, banReason) === true)
             message.channel.send(msg);
 
+        let t = new TimeEvent();
+        t.create(user, "unban", TimeEvent.parseTime(duration));
+        t.save();
+        t.start(message);
+
         //Setup timer until unban
-        setTimeout(function(){
-            let msg = `**${message.client.user.tag}** unbanned user **${args[1]}**.`;
-            Actions.unban(message, null, true, msg, message.client.user);
-        }, ms(duration));
+        // setTimeout(function(){
+        //     let msg = `**${message.client.user.tag}** unbanned user **${args[1]}**.`;
+        //     Actions.unban(message, null, true, msg, message.client.user);
+        // }, ms(duration));
     }
 }

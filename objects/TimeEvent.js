@@ -1,8 +1,10 @@
 let Timer = require("../models/timer");
 let Actions = require("../helpers/actions");
 let moment = require("moment");
+let mongoose = require("mongoose");
 
 class TimeEvent {
+    db_id = null;
     /**
      * Time event constructor
      * @param {User} user Discord user
@@ -11,7 +13,20 @@ class TimeEvent {
      * @param {boolean} start_now Optional (Default: True)
      * @param {number} start_delay Optional (Default: 0) Seconds
      */
-    constructor(user, action, duration, start_now = true, start_delay = 0) {
+    constructor(){}
+
+    async load(database_id){
+        this.db_id = database_id;
+
+        let r = await Timer.findById(this.db_id);
+        this.user_id = r.userID;
+        this.username = r.username;
+        this.end_action = r.action;
+        this.time_start = moment.utc(r.started_at);
+        this.time_end = moment.utc(r.end_at);
+    }
+
+    create(user, action, duration, start_now = true, start_delay = 0) {
         this.user_id = user.id;
         this.username = user.username;
         this.end_action = action;
@@ -20,12 +35,29 @@ class TimeEvent {
         let m = moment.utc();
         this.time_start = (start_now) ? m.clone() : m.clone().add(start_delay, "s");
         this.time_end = this.time_start.clone().add(this.duration, "s");
-        console.log("Time values: \n" + this.time_start.toISOString() + "\n" + this.time_end.toISOString());
+        console.log(this.time_start);
+        console.log(this.time_end);
     }
 
-    start(client){
-        setTimeout(() => {
-
+    start(message){
+        let msg = "", user;
+        if(this.end_action !== "unban") user = message.guild.members.cache.get(this.user_id).user;
+        setTimeout(async () => {
+            switch (this.end_action){
+                case "unmute":
+                    msg = `**${message.client.user.tag}** unmuted user **${user.username}#${user.discriminator}**.`;
+                    Actions.unmute(message, user, true, msg, message.client.user);
+                    break;
+                case "unblacklist":
+                    msg = `**${message.client.user.tag}** unblacklisted user **${user.tag}**.`;
+                    Actions.unblacklist(message, user, true, msg, message.client.user);
+                    break;
+                case "unban":
+                    msg = `**${message.client.user.tag}** unbanned user **${this.user_id}**.`;
+                    Actions.unban(message, this.user_id, true, msg, message.client.user);
+                    break;
+            }
+            await this.delete();
         }, this.time_end.diff(moment.utc()));
     }
 
@@ -40,18 +72,32 @@ class TimeEvent {
         });
 
         t.save()
-            .then(result => console.log(result))
+            .then(result => {
+                this.db_id = result._id;
+            })
             .catch(err => console.log(err));
+    }
+
+    async delete(){
+        if(this.db_id === null) return;
+        await Timer.findByIdAndDelete(this.db_id);
     }
 
     /**
      * Get function from string name
-     * @param {string} name
-     * @returns {function()}
+     * @param {string} duration
+     * @returns {number}
      */
-    static getFunctionFromName(name){
-        switch (name){
-            default: return ()=>{};
+    static parseTime(duration){
+        let unit = duration.substr(duration.length - 1);
+        let measure = parseInt(duration);
+        switch (unit.toLowerCase()){
+            case "s": return measure;
+            case "m": return measure * 60;
+            case "h": return measure * 3600;
+            case "d": return measure * 86400;
+            case "w": return measure * 604800;
+            default: return 0;
         }
     }
 }
