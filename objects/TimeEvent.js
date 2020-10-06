@@ -2,6 +2,7 @@ let Timer = require("../models/timer");
 let Actions = require("../helpers/actions");
 let moment = require("moment");
 let mongoose = require("mongoose");
+let lt = require("long-timeout");
 
 class TimeEvent {
     db_id = null;
@@ -35,14 +36,12 @@ class TimeEvent {
         let m = moment.utc();
         this.time_start = (start_now) ? m.clone() : m.clone().add(start_delay, "s");
         this.time_end = this.time_start.clone().add(this.duration, "s");
-        console.log(this.time_start);
-        console.log(this.time_end);
     }
 
     start(message){
         let msg = "", user;
         if(this.end_action !== "unban") user = message.guild.members.cache.get(this.user_id).user;
-        setTimeout(async () => {
+        lt.setTimeout(async () => {
             switch (this.end_action){
                 case "unmute":
                     msg = `**${message.client.user.tag}** unmuted user **${user.username}#${user.discriminator}**.`;

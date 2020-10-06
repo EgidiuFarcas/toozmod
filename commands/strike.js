@@ -1,6 +1,8 @@
 const config = require('../config.json');
 const UserManager = require('../modules/UserManager');
 const Actions = require('../helpers/actions');
+const Strike = require('../objects/Strike');
+const TimeEvent = require('../objects/TimeEvent');
 
 module.exports = {
     name: 'strike',
@@ -17,5 +19,14 @@ module.exports = {
         let msg = `**${message.author.tag}** struck user **${user.tag}** because: *${reason}*.`;
         if(await Actions.strike(message, user, true, msg, reason) === true)
             message.channel.send(msg);
+
+        let strike_count = await Strike.getStrikeCount(user.id);
+        if(strike_count === 3){
+            Actions.ban(message, user, true, `**${user.tag}** banned for 30 days because: 3 strikes`, 'Accumulated 3 Strikes - Automated Action');
+            let t = new TimeEvent();
+            t.create(user, "unban", TimeEvent.parseTime("30d"));
+            t.save();
+            t.start(message);
+        }
     }
 }

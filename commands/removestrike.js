@@ -8,7 +8,6 @@ module.exports = {
     async execute(message, args) {
         if(args.length !== 2) return message.reply("Wrong amount of arguments!");
         let strike = await Strike.getStrike(args[1]);
-        console.log(strike);
         if(strike.length === 0) return message.reply("Strike with ID **#"+args[1]+"** not found.");
         //strike the user
         let msg = `**${message.author.tag}** removed strike with ID: **${args[1]}**.`;
