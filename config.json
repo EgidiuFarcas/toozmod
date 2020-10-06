@@ -11,11 +11,11 @@
     "unbanned": "5BFF83",
     "tempbanned": "FFB854",
     "blacklisted": "000000",
-    "unblacklisted": "000000",
-    "struck": "000000",
-    "unstruck": "000000",
-    "strikeremoved": "000000",
-    "strikecheck": "000000",
+    "unblacklisted": "969C9F",
+    "struck": "8e44ad",
+    "unstruck": "8e44ad",
+    "strikeremoved": "8e44ad",
+    "strikecheck": "8e44ad",
     "helpmenu": "ff467f"
   }
 }
