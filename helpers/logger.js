@@ -10,12 +10,12 @@ exports.embed = (message, title, description, footer, author = message.author, c
         .setTimestamp()
         .setFooter(footer);
 
-    let channel = message.guild.channels.cache.find(c => c.name === config.log_channel_name);
+    let channel = message.guild.channels.cache.get(config.log_channel_id);
     if(channel) channel.send(exampleEmbed);
 };
 
 exports.plain = (message, text) => {
-    let channel = message.guild.channels.cache.find(c => c.name === config.log_channel_name);
+    let channel = message.guild.channels.cache.get(config.log_channel_id);
     let d = new Date();
     if(channel) channel.send(text + " || *" + d.toLocaleString() + '*');
 }

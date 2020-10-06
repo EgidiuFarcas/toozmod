@@ -22,7 +22,7 @@
     <list default="true" id="12fe6f04-1819-48c3-b434-cceb87b6f7af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profanities.json" beforeDir="false" afterPath="$PROJECT_DIR$/profanities.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/logger.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,7 @@
       <workItem from="1601838764911" duration="3428000" />
       <workItem from="1601894044408" duration="605000" />
       <workItem from="1601895485858" duration="17660000" />
-      <workItem from="1601989187278" duration="13148000" />
+      <workItem from="1601989187278" duration="15043000" />
     </task>
     <servers />
   </component>
