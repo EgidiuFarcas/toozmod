@@ -23,7 +23,6 @@ class Strike {
         if(prettyIndex !== 0){
             let latest = await StrikeSchema.find().sort({ _id: -1}).limit(10);
             latest = latest[0];
-            console.log(latest);
             prettyIndex = parseInt(latest.prettyID) + 1;
         }else prettyIndex = 1;
         let s = new StrikeSchema({

@@ -8,6 +8,7 @@ const Discord = require("discord.js");
 let Timer = require("./models/timer");
 const TimeEvent = require('./objects/TimeEvent');
 const SwearFilter = require('./modules/SwearFilter');
+const Actions = require('./helpers/actions');
 
 //Connect to mongoose db
 const uri = "mongodb+srv://toozmod_node:zFzlSQFOUx3GKiNO@cluster0.ztzpe.mongodb.net/toozmod?retryWrites=true&w=majority";
@@ -40,7 +41,13 @@ client.once("ready", async () => {
 client.login(botConfig.token).then();
 
 client.on('message', async message => {
-    if(SwearFilter.check(message)) return;
+    let filterCheck = SwearFilter.check(message);
+    if(filterCheck !== false){
+        await Actions.strike(message, message.author, true, `${message.author.tag} used a blacklisted word.`,
+            'Automated Action (blacklisted word: '+filterCheck +')');
+        await message.delete();
+        return;
+    }
     //Check if its a command
     if(message.content.charAt(0) !== botConfig.prefix) return;
     //Get only the command arguments
@@ -51,6 +58,7 @@ client.on('message', async message => {
     if(args[0] === "test"){
 
     }
+    if(args[0] === "help") client.commands.get('help').execute(message, args);
     if(args[0] === "ban") client.commands.get('ban').execute(message, args);
     if(args[0] === "unban") client.commands.get('unban').execute(message, args);
     if(args[0] === "tempban") client.commands.get('tempban').execute(message, args);
