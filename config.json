@@ -1,7 +1,7 @@
 {
   "access_role_name": "Moderator",
-  "log_channel_name": "\uD83D\uDCD6︱public-log",
-  "log_channel_id": "762073340037824532",
+  "log_channel_name": "modlog",
+  "log_channel_id": "762308592597991425",
   "muted_role_name": "Muted",
   "imbl_role_name": "Image Blacklist",
   "colors": {
