@@ -28,5 +28,8 @@ module.exports = {
             t.save();
             t.start(message);
         }
+        if(strike_count > 3){
+            Actions.ban(message, user, true, `**${user.tag}** banned permanently because: more than 3 strikes`, 'Accumulated more than 3 Strikes - Automated Action');
+        }
     }
 }
