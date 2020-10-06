@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const Discord = require("discord.js");
 let Timer = require("./models/timer");
 const TimeEvent = require('./objects/TimeEvent');
+const SwearFilter = require('./modules/SwearFilter');
 
 //Connect to mongoose db
 const uri = "mongodb+srv://toozmod_node:zFzlSQFOUx3GKiNO@cluster0.ztzpe.mongodb.net/toozmod?retryWrites=true&w=majority";
@@ -39,10 +40,13 @@ client.once("ready", async () => {
 client.login(botConfig.token).then();
 
 client.on('message', async message => {
+    if(SwearFilter.check(message)) return;
     //Check if its a command
     if(message.content.charAt(0) !== botConfig.prefix) return;
     //Get only the command arguments
     let args = message.content.substring(1).split(" ");
+
+    if(!message.member.roles.cache.find(r => r.name === config.access_role_name) && !message.member.permissions.has("MANAGE_GUILD")) return;
 
     if(args[0] === "test"){
 
@@ -54,4 +58,7 @@ client.on('message', async message => {
     if(args[0] === "unmute") client.commands.get('unmute').execute(message, args);
     if(args[0] === "blacklist") client.commands.get('imbl').execute(message, args);
     if(args[0] === "unblacklist") client.commands.get('unimbl').execute(message, args);
+    if(args[0] === "strike") client.commands.get('strike').execute(message, args);
+    if(args[0] === "strikes") client.commands.get('strikes').execute(message, args);
+    if(args[0] === "removestrike") client.commands.get('removestrike').execute(message, args);
 })

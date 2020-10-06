@@ -11,6 +11,10 @@
     "unbanned": "5BFF83",
     "tempbanned": "FFB854",
     "blacklisted": "000000",
-    "unblacklisted": "000000"
+    "unblacklisted": "000000",
+    "struck": "000000",
+    "unstruck": "000000",
+    "strikeremoved": "000000",
+    "strikecheck": "000000"
   }
 }

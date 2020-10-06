@@ -2,6 +2,7 @@ const config = require('../config.json');
 const Logger = require('../helpers/logger');
 const RoleManager = require('../modules/RoleManager');
 const UserManager = require('../modules/UserManager');
+const Strike = require('../objects/Strike');
 
 exports.ban = (message, user, log=false, log_txt = "", reason = "Automated Action") => {
     message.guild.member(user).ban({reason: reason}).then(()=>{
@@ -11,6 +12,16 @@ exports.ban = (message, user, log=false, log_txt = "", reason = "Automated Actio
     }).catch(err => {
         return false;
     });
+};
+
+exports.strike = async (message, user, log=false, log_txt = "", reason = "Automated Action") => {
+    let strike = new Strike(user, reason);
+    await strike.save();
+    let strike_count = await Strike.getStrikeCount(user.id);
+    message.channel.send(log_txt + ` __${user.username}__ now has ***${strike_count} ` + ((strike_count > 1) ? 'strikes' : 'strike') + `***.`);
+    if(log)
+        Logger.embed(message, 'Member Struck | **#'+ strike.prettyID +'**',
+            log_txt, 'ID - ' + user.id, message.author, config.colors.struck);
 };
 
 exports.mute = (message, user, log=false, log_txt = "", author = message.author) => {
