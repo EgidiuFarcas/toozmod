@@ -70,4 +70,14 @@ client.on('message', async message => {
     if(args[0] === "strikes") client.commands.get('strikes').execute(message, args);
     if(args[0] === "removestrike") client.commands.get('removestrike').execute(message, args);
     if(args[0] === "log") client.commands.get('log').execute(message, args);
-})
+});
+
+client.on("channelUpdate", (oldChannel, newChannel) => {
+    if(oldChannel.type !== "text") return;
+
+    let oldRateLimit = oldChannel.rateLimitPerUser;
+    let newRateLimit = newChannel.rateLimitPerUser;
+
+    if(oldRateLimit !== newRateLimit) Logger.embedClient(client,
+        "Channel Updated", "Channel " + client.channels.cache.get(oldChannel.id).toString() + " rate limit change. **" + oldRateLimit + "s** => **" + newRateLimit + "s**", "Channel Update", client.user, config.colors.helpmenu);
+});

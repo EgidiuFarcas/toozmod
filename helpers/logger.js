@@ -14,6 +14,19 @@ exports.embed = (message, title, description, footer, author = message.author, c
     if(channel) channel.send(exampleEmbed);
 };
 
+exports.embedClient = (client, title, description, footer, author = message.author, color = '0099ff') => {
+    const exampleEmbed = new Discord.MessageEmbed()
+        .setColor('0x' + color)
+        .setTitle(title)
+        .setAuthor(author.username, author.avatarURL())
+        .setDescription(description)
+        .setTimestamp()
+        .setFooter(footer);
+
+    let channel = client.channels.cache.get(config.log_channel_id);
+    if(channel) channel.send(exampleEmbed);
+};
+
 exports.plain = (message, text) => {
     let channel = message.guild.channels.cache.get(config.log_channel_id);
     let d = new Date();
