@@ -1,4 +1,5 @@
 {
   "token": "NzYzNDI0NTM2ODc5MzAwNjcw.X33ggQ.i-jziaVhrHDssQDJFay0cs5DUHg",
+  "database_uri": "mongodb+srv://toozmod_node:zFzlSQFOUx3GKiNO@cluster0.ztzpe.mongodb.net/toozmod?retryWrites=true&w=majority",
   "prefix": "."
 }

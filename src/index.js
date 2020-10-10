@@ -11,7 +11,7 @@ const SwearFilter = require('./modules/SwearFilter');
 const Actions = require('./helpers/actions');
 
 //Connect to mongoose db
-const uri = "mongodb+srv://toozmod_node:zFzlSQFOUx3GKiNO@cluster0.ztzpe.mongodb.net/toozmod?retryWrites=true&w=majority";
+const uri = botConfig.database_uri;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true } );
 
 const client = new Discord.Client();
