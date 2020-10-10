@@ -17,7 +17,7 @@ module.exports = {
             .addField('`' + botconfig.prefix + 'mute [@user or ID] [duration(s/m/h/d)] [Reason] `', "Mutes a user temporarily (duration 0 for perma mute)")
             .addField('`' + botconfig.prefix + 'unmute [@user or ID] `', "Unmutes a user")
             .addField('`' + botconfig.prefix + 'blacklist [@user or ID] [duration(s/m/h/d)] [Reason] `', "Image Blacklists a user temporarily (duration 0 for perma blacklist)")
-            .addField('`' + botconfig.prefix + 'unblacklist [@user or ID] `', "Unmutes a user")
+            .addField('`' + botconfig.prefix + 'unblacklist [@user or ID] `', "Unblacklists a user")
             .addField('`' + botconfig.prefix + 'log [text] `', "Sends a custom log message in the log channel.")
         await message.channel.send(emb);
         await message.react("✅");

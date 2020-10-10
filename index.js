@@ -70,6 +70,7 @@ client.on('message', async message => {
     if(args[0] === "strikes") client.commands.get('strikes').execute(message, args);
     if(args[0] === "removestrike") client.commands.get('removestrike').execute(message, args);
     if(args[0] === "log") client.commands.get('log').execute(message, args);
+    if(args[0] === "echo") client.commands.get('echo').execute(message, args);
 });
 
 client.on("channelUpdate", (oldChannel, newChannel) => {
