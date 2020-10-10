@@ -19,6 +19,7 @@ module.exports = {
             .addField('`' + botconfig.prefix + 'blacklist [@user or ID] [duration(s/m/h/d)] [Reason] `', "Image Blacklists a user temporarily (duration 0 for perma blacklist)")
             .addField('`' + botconfig.prefix + 'unblacklist [@user or ID] `', "Unblacklists a user")
             .addField('`' + botconfig.prefix + 'log [text] `', "Sends a custom log message in the log channel.")
+            .addField('`' + botconfig.prefix + 'echo [#channel or ID] [text] `', "Sends a message in the channel as the bot.")
         await message.channel.send(emb);
         await message.react("✅");
     }
