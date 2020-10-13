@@ -9,6 +9,7 @@ let Timer = require("./models/timer");
 const TimeEvent = require('./objects/TimeEvent');
 const SwearFilter = require('./modules/SwearFilter');
 const Actions = require('./helpers/actions');
+const PingFilter = require("./modules/PingFilter");
 
 //Connect to mongoose db
 const uri = "mongodb+srv://toozmod_node:zFzlSQFOUx3GKiNO@cluster0.ztzpe.mongodb.net/toozmod?retryWrites=true&w=majority";
@@ -48,6 +49,19 @@ client.on('message', async message => {
         await message.delete();
         return;
     }
+    filterCheck = PingFilter.check(message);
+    if(filterCheck !== false){
+        await Actions.strike(message, message.author, true, `${message.author.tag} pinged a partner.`,
+            'Automated Action (Pinged a partner)');
+        await message.delete();
+        Actions.mute(message, message.author, true, `${message.author.tag} pinged a partner. Muted for 1 hour.`, message.client.user);
+        let t = new TimeEvent();
+        t.create(user, "unmute", TimeEvent.parseTime("1h"));
+        t.save();
+        t.start(message);
+        return;
+    }
+
     //Check if its a command
     if(message.content.charAt(0) !== botConfig.prefix) return;
     //Get only the command arguments
