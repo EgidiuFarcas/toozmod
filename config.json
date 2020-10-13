@@ -1,0 +1,25 @@
+{
+    "access_role_name": "Moderator",
+    "access_role_id": "762280553260384266",
+    "log_channel_name": "modlog",
+    "log_channel_id": "762308592597991425",
+    "muted_role_name": "Muted",
+    "imbl_role_name": "Image Blacklist",
+    "partner_role_id": "765611873735147541",
+    "colors": {
+        "muted": "000000",
+        "unmuted": "969C9F",
+        "banned": "FF5A52",
+        "unbanned": "5BFF83",
+        "tempbanned": "FFB854",
+        "blacklisted": "000000",
+        "unblacklisted": "969C9F",
+        "struck": "8e44ad",
+        "unstruck": "8e44ad",
+        "strikeremoved": "8e44ad",
+        "strikecheck": "8e44ad",
+        "helpmenu": "ff467f",
+        "customlog": "ff467f"
+    }
+}
+    
