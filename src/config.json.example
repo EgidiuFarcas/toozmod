@@ -1,0 +1,43 @@
+{
+    "channels": {
+        "log": {
+            "id": ""
+        }
+    },
+    "roles": {
+        "access": {
+            "id": ""
+        },
+        "partner": {
+            "id": ""
+        },
+        "muted": {
+            "id": ""
+        },
+        "blacklisted": {
+            "id": ""
+        },
+        "unpingable": [
+            { "id": "" }
+        ]
+    },
+    "profanities": {
+        "words": [ "cunt" ]
+    },
+    "colors": {
+        "helpmenu": "ff467f",
+        "customlog": "ff467f",
+        "strike":{
+            "struck": "8e44ad",
+            "removed": "8e44ad",
+            "check": "8e44ad"
+        },
+        "muted": "000000",
+        "unmuted": "969C9F",
+        "banned": "FF5A52",
+        "unbanned": "5BFF83",
+        "tempbanned": "FFB854",
+        "blacklisted": "000000",
+        "unblacklisted": "969C9F"
+    }
+}
