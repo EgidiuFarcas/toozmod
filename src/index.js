@@ -33,6 +33,10 @@ client.once('ready', async () => {
     message = await logChannel.send('Loading timers from database.* Please wait...*').catch(err => console.log(err));
     Timer.loadPendingTimers(message);
     await message.edit("**Load Complete.**").catch(err => console.log(err));
+    //Set custom status
+    client.user.setPresence({ activity: { name: 'youtooz.com' }, status: 'dnd' })
+        .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
+        .catch(console.error);
 });
 
 //On new message
