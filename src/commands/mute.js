@@ -19,6 +19,14 @@ module.exports = {
         if(!duration) return message.reply('You forgot to enter a duration for this mute!');
         if (user === message.author) return message.channel.send('You can\'t mute yourself');
 
+        //Check if timescale is correct
+        try{
+            Timer.parseTime(time);
+        }catch(err) {
+            message.reply(err);
+            return;
+        }
+        
         let msg = `**${message.author.tag}** muted user **${user.tag}** for **${duration}** because: **${reason}**.`;
         if(Actions.mute(message, user, true, msg) === true)
             message.channel.send(msg);

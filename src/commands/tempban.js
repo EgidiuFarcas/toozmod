@@ -18,6 +18,14 @@ module.exports = {
         if (!banReason) return message.reply('You forgot to enter a reason for this ban!');
         if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user because you the bot has not sufficient permissions!');
 
+        //Check if timescale is correct
+        try{
+            Timer.parseTime(time);
+        }catch(err) {
+            message.reply(err);
+            return;
+        }
+
         let msg = `**${message.author.tag}** banned user **${user.tag}** for **${duration}** because: **${banReason}**.`;
         if(Actions.ban(message, user, true, msg, banReason) === true)
             message.channel.send(msg);

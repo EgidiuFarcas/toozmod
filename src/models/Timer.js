@@ -98,7 +98,9 @@ class Timer {
             case "h": return measure * 3600;
             case "d": return measure * 86400;
             case "w": return measure * 604800;
-            default: return 0;
+            default:
+                throw `Wrong time scale. Use s/m/h/d/w, ${unit} is not available.`;
+                return 1;
         }
     }
 

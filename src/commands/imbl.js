@@ -19,6 +19,14 @@ module.exports = {
         if(!time) return message.reply('You forgot to enter a duration for this blacklist!');
         if (user === message.author) return message.channel.send('You can\'t blacklist yourself');
 
+        //Check if timescale is correct
+        try{
+            Timer.parseTime(time);
+        }catch(err) {
+            message.reply(err);
+            return;
+        }
+
         let msg = `**${message.author.tag}** blacklisted user **${user.tag}** for **${time}** because: **${reason}**.`;
         if(Actions.blacklist(message, user, true, msg) === true)
             message.channel.send(msg);
