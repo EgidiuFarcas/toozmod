@@ -1,4 +1,5 @@
 const profanities = require('../../config.json').profanities;
+const Actions = require('../../utils/Actions');
 
 class SwearFilter {
 
