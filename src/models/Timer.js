@@ -90,7 +90,7 @@ class Timer {
      * @returns {number}
      */
     static parseTime(duration){
-        let unit = duration.substr(duration.length - 1);
+        let unit = duration.replace(/[0-9]/g, '');
         let measure = parseInt(duration);
         switch (unit.toLowerCase()){
             case "s": return measure;
@@ -99,7 +99,7 @@ class Timer {
             case "d": return measure * 86400;
             case "w": return measure * 604800;
             default:
-                throw `Wrong time scale. Use s/m/h/d/w, ${unit} is not available.`;
+                throw `Wrong time scale. Use s/m/h/d/w, **${unit}** is not available.`;
         }
     }
 
