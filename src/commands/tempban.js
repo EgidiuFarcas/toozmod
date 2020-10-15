@@ -20,7 +20,7 @@ module.exports = {
 
         //Check if timescale is correct
         try{
-            Timer.parseTime(time);
+            Timer.parseTime(duration);
         }catch(err) {
             message.reply(err);
             return;

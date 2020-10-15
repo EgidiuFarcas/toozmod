@@ -100,7 +100,6 @@ class Timer {
             case "w": return measure * 604800;
             default:
                 throw `Wrong time scale. Use s/m/h/d/w, ${unit} is not available.`;
-                return 1;
         }
     }
 
