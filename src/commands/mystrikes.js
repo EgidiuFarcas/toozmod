@@ -27,5 +27,6 @@ module.exports = {
             emb.addField(`**#${strikes[i].prettyID}**`, strikes[i].reason, true);
         }
         await message.author.send(emb);
+        message.react("✅");
     }
 }
