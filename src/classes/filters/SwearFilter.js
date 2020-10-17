@@ -25,7 +25,7 @@ class SwearFilter {
         let args = message.content.split(' ');
         for(let i = 0; i < args.length; i++){
             for(let j = 0; j < profanities.words.length; j++){
-                if(args[i].toLowerCase().includes(profanities.words[j])) return profanities.words[j];
+                if(args[i].toLowerCase() === profanities.words[j]) return profanities.words[j];
             }
         }
         return false;
