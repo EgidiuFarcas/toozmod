@@ -11,6 +11,12 @@ class SwearFilter {
         if(filterCheck !== false){
             await Actions.strike(message, message.author, true, `${message.author.tag} used a blacklisted word.`,
                 'Automated Action (blacklisted word: '+filterCheck +')');
+            
+            let t = new Timer();
+            t.create(message.author, "unmute", Timer.parseTime("6h"));
+            t.save();
+            t.start(message);
+
             await message.delete();
             return 'fail';
         }

@@ -13,13 +13,14 @@ class PingFilter {
         if(filterCheck !== false){
             await Actions.strike(message, message.author, true, `${message.author.tag} pinged a partner.`,
                 'Automated Action (Pinged a partner)');
-            await message.delete();
             Actions.mute(message, message.author, true, `${message.author.tag} pinged a partner. Muted for 1 hour.`, message.client.user);
             
             let t = new Timer();
-            t.create(user, "unmute", Timer.parseTime("1h"));
+            t.create(message.author, "unmute", Timer.parseTime("1h"));
             t.save();
             t.start(message);
+            
+            await message.delete();
             return 'fail';
         }else return 'pass';
     }
