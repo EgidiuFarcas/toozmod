@@ -39,17 +39,32 @@ client.once('ready', async () => {
         .catch(console.error);
 });
 
+const checkedStrikesRecently = new Set();
+
 //On new message
 client.on('message', async message => {
-    //Split message into arguments
-    let args = message.content.substring(1).split(" ");
-
+    //Refuse DM Commands
+    if(message.guild === null) return;
     //Apply Filters
     if(await SwearFilter.filter(message) === 'fail') return;
     if(await PingFilter.filter(message) === 'fail') return;
 
     //Check if its a command
     if(message.content.charAt(0) !== process.env.PREFIX) return;
+    //Split message into arguments
+    let args = message.content.substring(1).split(" ");
+
+    if(args[0] === "mystrikes") {
+        if(checkedStrikesRecently.has(message.author.id)){
+            message.reply("Wait 5 minutes before checking your strikes again.").then(msg => msg.delete({timeout: 5000})).catch(err => console.error(err));
+        }else{
+            client.commands.get('mystrikes').execute(message, args);
+            checkedStrikesRecently.add(message.author.id);
+            setTimeout(() => {
+                checkedStrikesRecently.delete(message.author.id);
+            }, 300000);
+        }
+    }
 
     //Execute code under this only if user has necessary permissions
     if(!message.member.roles.cache.has(config.roles.access.id) &&
