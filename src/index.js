@@ -58,7 +58,7 @@ client.on('message', async message => {
         if(checkedStrikesRecently.has(message.author.id)){
             message.reply("Wait 5 minutes before checking your strikes again.").then(msg => msg.delete({timeout: 5000})).catch(err => console.error(err));
         }else{
-            client.commands.get('mystrikes').execute(message, args);
+            await client.commands.get('mystrikes').execute(message, args);
             checkedStrikesRecently.add(message.author.id);
             setTimeout(() => {
                 checkedStrikesRecently.delete(message.author.id);
