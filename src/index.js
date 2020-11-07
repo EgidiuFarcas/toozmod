@@ -13,6 +13,7 @@ const Timer = require('./models/Timer');
 //Include Clases
 const SwearFilter = require('./classes/filters/SwearFilter');
 const PingFilter = require('./classes/filters/PingFilter');
+const FAQFilter = require('./classes/filters/FAQFilter');
 
 //Connect to database
 mongoose.connect(process.env.DATABASE_URI,
@@ -48,6 +49,7 @@ client.on('message', async message => {
     //Apply Filters
     if(await SwearFilter.filter(message) === 'fail') return;
     if(await PingFilter.filter(message) === 'fail') return;
+    if(await FAQFilter.filter(message) === 'break') return;
 
     //Check if its a command
     if(message.content.charAt(0) !== process.env.PREFIX) return;
@@ -82,6 +84,9 @@ client.on('message', async message => {
     if(args[0] === "strike") client.commands.get('strike').execute(message, args);
     if(args[0] === "strikes") client.commands.get('strikes').execute(message, args);
     if(args[0] === "removestrike") client.commands.get('removestrike').execute(message, args);
+    if(args[0] === "faqadd") client.commands.get('faqadd').execute(message, args);
+    if(args[0] === "faqrem") client.commands.get('faqrem').execute(message, args);
+    if(args[0] === "faqlist" || args[0] === "faqs") client.commands.get('faqlist').execute(message, args);
     if(args[0] === "log") client.commands.get('log').execute(message, args);
     if(args[0] === "echo") client.commands.get('echo').execute(message, args);
 });

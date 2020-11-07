@@ -19,6 +19,9 @@ module.exports = {
             .addField('`' + process.env.PREFIX + 'unblacklist [@user or ID] `', "Unblacklists a user")
             .addField('`' + process.env.PREFIX + 'log [text] `', "Sends a custom log message in the log channel.")
             .addField('`' + process.env.PREFIX + 'echo [#channel or ID] [text] `', "Sends a message in the channel as the bot.")
+            .addField('`' + process.env.PREFIX + 'faqadd [keywords] | [reply] `', "Adds a new FAQ.")
+            .addField('`' + process.env.PREFIX + 'faqrem [id] `', "Removes a FAQ.")
+            .addField('`' + process.env.PREFIX + 'faqlist` or ' + '`' + process.env.PREFIX + 'faqs`', "List FAQs");
         await message.channel.send(emb);
         await message.react("✅");
     }

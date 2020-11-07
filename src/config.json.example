@@ -38,6 +38,8 @@
         "unbanned": "5BFF83",
         "tempbanned": "FFB854",
         "blacklisted": "000000",
-        "unblacklisted": "969C9F"
-    }
+        "unblacklisted": "969C9F",
+        "faqlist": "000000"
+    },
+    "faq": []
 }
