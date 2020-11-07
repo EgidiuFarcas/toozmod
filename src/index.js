@@ -15,9 +15,18 @@ const SwearFilter = require('./classes/filters/SwearFilter');
 const PingFilter = require('./classes/filters/PingFilter');
 const FAQFilter = require('./classes/filters/FAQFilter');
 
-//Connect to database
-mongoose.connect(process.env.DATABASE_URI,
-    { useNewUrlParser: true, useUnifiedTopology: true}, () => console.log('Connected to DB'));
+try{
+    //Connect to database
+    mongoose.connect(process.env.DATABASE_URI,
+        { useNewUrlParser: true, useUnifiedTopology: true}, 
+        (err) => {
+            if(err) throw err;
+            else console.log('Connected to DB')
+        });
+}catch(err){
+    console.error(err);
+    return;
+}
 
 //Create client
 const client = new Discord.Client();
