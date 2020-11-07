@@ -44,7 +44,11 @@ class Timer {
         let msg = "", user;
         if(this.end_action !== "unban") {
             let member = message.guild.members.cache.get(this.user_id);
-            if(member === undefined) return console.warn(`WARN Cannot find member with ID: ${this.user_id} : action '${this.end_action}' | Timer.js:47`);
+            if(member === undefined){
+                await this.delete();
+                console.warn(`WARN TimerID(${this.db_id}) Cannot find member with ID: ${this.user_id} : action '${this.end_action}' | Timer.js:49`);
+                return console.warn(`ACTION TimerID(${this.db_id}) has been removed | Timer.js:50`);
+            }
             user = member.user;
         }
         lt.setTimeout(async () => {
