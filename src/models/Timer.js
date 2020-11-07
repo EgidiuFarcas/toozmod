@@ -40,7 +40,7 @@ class Timer {
         this.time_end = this.time_start.clone().add(this.duration, "s");
     }
 
-    start(message){
+    async start(message){
         let msg = "", user;
         if(this.end_action !== "unban") {
             let member = message.guild.members.cache.get(this.user_id);
