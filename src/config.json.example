@@ -2,6 +2,9 @@
     "channels": {
         "log": {
             "id": ""
+        },
+        "faq": {
+            "id": ""
         }
     },
     "roles": {
@@ -39,7 +42,11 @@
         "tempbanned": "FFB854",
         "blacklisted": "000000",
         "unblacklisted": "969C9F",
-        "faqlist": "000000"
+        "faqlist": "000000",
+        "faq": {
+            "added": "5BFF83",
+            "removed": "FF5A52"
+        }
     },
     "faq": []
 }
