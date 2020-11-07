@@ -42,7 +42,11 @@ class Timer {
 
     start(message){
         let msg = "", user;
-        if(this.end_action !== "unban") user = message.guild.members.cache.get(this.user_id).user;
+        if(this.end_action !== "unban") {
+            let member = message.guild.members.cache.get(this.user_id);
+            if(member === undefined) return console.error(`Cannot find member with ID: ${this.user_id} | Timer.js:47`);
+            user = member.user;
+        }
         lt.setTimeout(async () => {
             switch (this.end_action){
                 case "unmute":
