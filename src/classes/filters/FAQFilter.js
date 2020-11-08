@@ -25,7 +25,9 @@ class FAQFilter {
         for(let i = 0; i < config.faq.length; i++){
             let fit = 0;
             for(let j = 0; j < config.faq[i].keywords.length; j++){
-                if(message.content.includes(config.faq[i].keywords[j])) fit++;
+                let content = message.content.toLowerCase();
+                let keyword = config.faq[i].keywords[j].toLowerCase();
+                if(content.includes(keyword)) fit++;
             }
             let fitness = (fit / config.faq[i].keywords.length) * 100;
             if(fitness >= 75) return config.faq[i].answer;
