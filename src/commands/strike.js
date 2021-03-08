@@ -20,15 +20,15 @@ module.exports = {
             message.channel.send(msg);
 
         let strike_count = await Strike.getStrikeCount(user.id);
-        if(strike_count === 3){
-            Actions.ban(message, user, true, `**${user.tag}** banned for 30 days because: 3 strikes`, 'Accumulated 3 Strikes - Automated Action');
+        if(strike_count === 2){
+            Actions.ban(message, user, true, `**${user.tag}** banned for 7 days because: 2 strikes`, 'Accumulated 3 Strikes - Automated Action');
             let t = new Timer();
-            t.create(user, "unban", Timer.parseTime("30d"));
+            t.create(user, "unban", Timer.parseTime("7d"));
             t.save();
             t.start(message);
         }
-        if(strike_count > 3){
-            Actions.ban(message, user, true, `**${user.tag}** banned permanently because: more than 3 strikes`, 'Accumulated more than 3 Strikes - Automated Action');
+        if(strike_count >= 3){
+            Actions.ban(message, user, true, `**${user.tag}** banned permanently because: 3 or more strikes`, 'Accumulated 3 or more Strikes - Automated Action');
         }
     }
 }

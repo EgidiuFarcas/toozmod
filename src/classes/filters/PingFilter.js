@@ -15,6 +15,18 @@ class PingFilter {
                 'Automated Action (Pinged a partner)');
             Actions.mute(message, message.author, true, `${message.author.tag} pinged a partner. Muted for 1 hour.`, message.client.user);
             
+            let strike_count = await Strike.getStrikeCount(user.id);
+            if(strike_count === 2){
+                Actions.ban(message, user, true, `**${user.tag}** banned for 7 days because: 2 strikes`, 'Accumulated 3 Strikes - Automated Action');
+                let t = new Timer();
+                t.create(user, "unban", Timer.parseTime("7d"));
+                t.save();
+                t.start(message);
+            }
+            if(strike_count >= 3){
+                Actions.ban(message, user, true, `**${user.tag}** banned permanently because: 3 or more strikes`, 'Accumulated 3 or more Strikes - Automated Action');
+            }
+
             let t = new Timer();
             t.create(message.author, "unmute", Timer.parseTime("1h"));
             t.save();
